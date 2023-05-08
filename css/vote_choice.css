@@ -61,11 +61,11 @@ aside ul li:hover {
     display: none;
 }
  
-/* .mainTop>input {
+/* .ch_count>p>input {
     display: none;
-}
+} */
 
-i[class="bi bi-plus-circle"] {
+/*i[class="bi bi-plus-circle"] {
     float: right;
     width: 25px;
     height: 25px;

@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,6 +70,7 @@
             <!-- 투표글 작성창 -->
             <div class="addChoice hide"> 
                     <div class="align">
+                    	<input style="text" id="numb">
                         <p>골라줘 :</p><input style="width: 400px;" type="text" name="choiceSub" id="choiceSub" maxlength="25"
                             placeholder=" 25자까지만 쓰세요옹">
                         <input type="submit" name="startChoice" id="startChoice" value="Choice Strat!"
