@@ -10,8 +10,8 @@
 <body>
         <header>
             <div id="logo">
-                <a href="main">
-                    <h1><img src="images/mainicon.png" style="width: 50px; padding: 5px;">Hide on <span
+                <a href="/">
+                    <h1><img src="/resources/images/mainicon.png" style="width: 50px; padding: 5px;">Hide on <span
                             class="text-rainbow">404</span></h1>
                 </a>
             </div>

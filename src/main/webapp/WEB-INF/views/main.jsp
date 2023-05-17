@@ -3,8 +3,8 @@
 <html>
 
 <head>
-        <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/mainpage.css">
+        <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/css/mainpage.css">
     <title>Hide on 404</title>
 </head>
 
@@ -13,9 +13,9 @@
 <%@ include file = "header.jsp" %>
         <div id="slideShow">
             <div id="slides">
-                <img src="images/photo-1.jpg" alt style="display: block;">
-                <img src="images/photo-2.jpg" alt style="display: none;">
-                <img src="images/photo-3.jpg" alt style="display: none;">
+                <img src="resources/images/photo-1.jpg" alt style="display: block;">
+                <img src="resources/images/photo-2.jpg" alt style="display: none;">
+                <img src="resources/images/photo-3.jpg" alt style="display: none;">
                 <button id="prev">&lang;</button>
                 <button id="next">&rang;</button>
             </div>
