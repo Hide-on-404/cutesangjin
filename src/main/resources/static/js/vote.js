@@ -36,83 +36,103 @@ window.addEventListener('DOMContentLoaded', () => {
         return attr.replace("close", "open");
       }
     });
-  });
-  
-// 따봉 누르면(checkbox == checked) 카운트 1 증가
-/// 한번 더누르면(checkbox != checked ) 카운트 1 감소
-/*
-// 좌측 따봉버튼
-function leftCheckboxClick(checkbox, otherCheckboxId) {
-  const otherCheckbox = document.getElementById(otherCheckboxId);
-  const count1Element = document.querySelector('.count1').innerText;
-  const count2Element = document.querySelector('.count2').innerText;;
-
-  if (checkbox.checked) {
-    otherCheckbox.disabled = true;
-    if (confirm("선택하시겠습니까?")) {
-		// 카운트 증가
-      count1After = parseInt(count1Element) + 1;
-     alert("증가 전: " + count1Element +"\n"+
-     		"증가 후: " + count1After);     
-	
-      return count1After = parseInt(count1Element) + 1;
-    } else {
-      checkbox.checked = false;
-      otherCheckbox.disabled = false;
-      return false;
-    }
-  } else {
-    otherCheckbox.disabled = false;
-	// 카운트 감소
-    if (confirm("선택을 취소하시겠습니까?\n\n(대충 두둥-하는 웅장한 브금)")) {
-      count1Plus = parseInt(count1Element) + 1;
-      count1After = parseInt(count1Element);
-     alert("감소 전: " + count1Plus +"\n"+
-     		"감소 후: " + count1After);   
-      return count1After = parseInt(count1Element);
-    } else {
-      checkbox.checked = true;
-      otherCheckbox.disabled = true;
-      return false;
-    }
   }
-}
- function upLeftCount(num){
-	location.href='countUp?choice1_count='+count1After+'&choice2_count=3'+'&num='+num;
-}*/
+);
+ /* 
+function CheckboxClick(num, state) {
+  // 왼쪽 체크박스 클릭 시
+  if (state == 'leftGood') {
+    // 왼쪽 체크박스가 체크되어 있는지 확인
+    var leftCheckbox = document.querySelector('.leftCheck');
+    alert(leftCheckbox.innerHTML);
+    if (leftCheckbox.checked) {
+      // 왼쪽 체크박스가 체크되었을 때
+	location.href = 'countUp?num=' + num + '&choice1_count=' + 1 + '&choice2_count=' + 0;
+      
+      // 오른쪽 체크박스 해제
+      var rightCheckbox = document.querySelector('.rightCheck');
+      rightCheckbox.checked = false;
+    } else {
+      // 왼쪽 체크박스가 체크 해제될 때
+	location.href = 'countUp?num=' + num + '&choice1_count=' + -1 + '&choice2_count=' + 0;
+      // 여기서 추가적인 처리가 필요하다면 원하는 작업을 수행할 수 있습니다.
+    }
+  } else if (state == 'rightGood') {
+      // 오른쪽 체크박스 클릭 시
+    var rightCheckbox = document.querySelector('.rightCheck');
+    if (rightCheckbox.checked) {
+	location.href = 'countUp?num=' + num + '&choice1_count=' + 0 + '&choice2_count=' + 1;
+      
+      // 오른쪽 체크박스 해제
+      var leftCheckbox = document.querySelector('.leftCheck');
+      leftCheckbox.checked = false;
+    } else {
+	location.href = 'countUp?num=' + num + '&choice1_count=' + 0 + '&choice2_count=' + -1;
+  }
+  }
+ }
+*/
 
 function CheckboxClick(num, state) {
   // 왼쪽 체크박스 클릭 시
   if (state == 'leftGood') {
-	  upCount(num, state);
-    // 오른쪽 체크박스 해제
-    document.querySelectorAll('.rightCheck').forEach(function(checkbox) {
-      checkbox.checked = false;
-    });
-  }
-  // 오른쪽 체크박스 클릭 시
-  else if (state == 'rightGood') {
-	  upCount(num, state)
-    // 왼쪽 체크박스 해제
-    document.querySelectorAll('.leftCheck').forEach(function(checkbox) {
-      checkbox.checked = false;
-    });
-  }}
-
-
-function upCount(num, state) {
-	
-	if(state == 'leftGood'){
-		alert(state);
-       location.href = 'countUp?num=' + num + '&choice1_count=' + 1 + '&choice2_count=' + 0;
-  }else if(state == 'rightGood'){
-	  alert(state);
-	    location.href = 'countUp?num=' + num + '&choice1_count=' + 0 + '&choice2_count=' +1;
+    // 왼쪽 체크박스가 체크되어 있는지 확인
+    var leftCheckbox = document.querySelector('.leftCheck');
+    if (leftCheckbox.checked) {
+      // 왼쪽 체크박스가 체크되었을 때
+      
+      // 오른쪽 체크박스 해제
+      var rightCheckbox = document.querySelector('.rightCheck');
+      rightCheckbox.checked = false;
+      upCount(num, 1, 0);}
+    else {
+      // 왼쪽 체크박스가 체크 해제될 때
+      upCount(num, -1, 0);
+    }
+  } else if (state == 'rightGood') {
+    // 오른쪽 체크박스 클릭 시
+    var rightCheckbox = document.querySelector('.rightCheck');
+    if (rightCheckbox.checked) {
+      // 오른쪽 체크박스가 체크되었을 때
+      upCount(num, 0, 1);
+      
+      // 왼쪽 체크박스 해제
+      var leftCheckbox = document.querySelector('.leftCheck');
+      leftCheckbox.checked = false;
+    } else {
+      // 오른쪽 체크박스가 체크 해제될 때
+      upCount(num, 0, -1);
+    }
   }
 }
 
+function upCount(num, choice1_count, choice2_count) {
+location.href = 'countUp?num=' + num + '&choice1_count=' + choice1_count + '&choice2_count=' + choice2_count;
+ };
+ 
+  /*
+// AJAX 요청
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // 요청이 성공적으로 완료되었을 때
+      var response = JSON.parse(xhr.responseText);
+      var newChoice1Count = response.choice1_count;
+      var newChoice2Count = response.choice2_count;
 
+      // 화면 갱신
+      var count1Element = document.querySelector('.count1');
+      var count2Element = document.querySelector('.count2');
 
-
-
-
+      if (count1Element) {
+        count1Element.textContent = newChoice1Count;
+      }
+      if (count2Element) {
+        count2Element.textContent = newChoice2Count;
+      }
+    }
+  };
+  xhr.send();
+}
+*/

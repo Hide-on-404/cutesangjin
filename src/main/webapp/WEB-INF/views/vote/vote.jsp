@@ -9,8 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hide on 404 - 투표방</title>
-    <link rel="stylesheet" href="./resources/css/main.css">
-    <link rel="stylesheet" href="./resources/css/vote.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/vote.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 
@@ -46,10 +46,10 @@
             <c:forEach var="vDto" items="${list }" varStatus="i">		
             <div class="choiceList">
                 <span class="chSub">Q${vDto.num}. &nbsp;${vDto.choiceSub }</span>		<!-- 투표 제목 -->
-                <a href="deleteVote?num=${vDto.num }"><img id="icon_del" src="resources/images/delete.png"></a>		<!-- 삭제 버튼 -->	
+                <a href="deleteVote?num=${vDto.num }"><img id="icon_del" src="images/delete.png"></a>		<!-- 삭제 버튼 -->	
                 <div class="imgtoggle">
 			    	<span>
-			    		<img id="icon_upd" class="editBtn" src="resources/images/update_open.png">			<!-- 편집 버튼 -->
+			    		<img id="icon_upd" class="editBtn" src="images/update_open.png">			<!-- 편집 버튼 -->
 			    	</span>
   				</div>
                 <div class="choice_realtime">		
@@ -57,8 +57,8 @@
                     	<p class="ch1">${vDto.choice_1 }</p>		<!-- 1번 선택지 -->
                     	<p class="count1 ${i.index}">${vDto.choice1_count }	<!-- 1번 선택지 count -->
                     		<label for="leftCk ${i.index }">
-                    			<input type="checkbox" id="leftCk ${i.index }" class="leftCheck" onclick="CheckboxClick(${vDto.num}, 'leftGood'), ${vDto.choice1_count }, ${vDto.choice2_count }">		<!-- 1번 선택지 선택버튼 -->
-                    			<img class="icon_boom1" src="resources/images/boomUp1.png">
+                    			<input type="checkbox" id="leftCk ${i.index }" class="leftCheck" onchange="CheckboxClick(${vDto.num}, 'leftGood')">		<!-- 1번 선택지 선택버튼 -->
+                    			<img class="icon_boom1" src="images/boomUp1.png">
                		     	</label>
            		     	</p>
                    		<p class="result1">
@@ -73,14 +73,13 @@
 	                    <p class="ch2">${vDto.choice_2 }</p>		<!-- 2번 선택지 -->
                         <p class="count2 ${i.index }">					
                      	  <label for="rightCk ${i.index }">
-                     	  	<input type="checkbox" id="rightCk ${i.index }" class="rightCheck" onclick="CheckboxClick(${vDto.num}, 'rightGood')">		<!-- 2번 선택지 선택버튼 -->
-                 		    <img class="icon_boom2" src="resources/images/boomUp2.png">
+                     	  	<input type="checkbox" id="rightCk ${i.index }" class="rightCheck" onchange="CheckboxClick(${vDto.num}, 'rightGood')">		<!-- 2번 선택지 선택버튼 -->
+                 		    <img class="icon_boom2" src="images/boomUp2.png">
                 		  </label>${vDto.choice2_count }		<!-- 2번 선택지 count -->			
                 		</p>
                    		<p class="result2">
                    			<i><fmt:formatNumber value="${vDto.choice2_count/(vDto.choice1_count+vDto.choice2_count)}" pattern="(##.##%)"/></i>	<!-- 2번 선택지 비율 -->
                   		</p>
-                   		<p class="cDate">${vDto.created_at }</p>		<!-- 생성일자 -->
                     </div>
                 </div>
                  <!-- 투표글 수정창 -->
@@ -97,6 +96,7 @@
               	  		</form>
                     </div>
             </div>
+                               		<p class="cDate">${vDto.created_at }</p>		<!-- 생성일자 -->
             </div>            
             </c:forEach>
             </div>
@@ -104,7 +104,7 @@
 <%@ include file = "../footer.jsp" %>
     </div>
  <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
-<script src="/resources/js/vote.js"></script>
+<script src="js/vote.js"></script>
 </body>
 
 </html>

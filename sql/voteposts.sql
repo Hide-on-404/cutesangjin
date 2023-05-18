@@ -21,3 +21,14 @@ select * from voteposts
 order by num desc ;
 
 update VOTEPOSTS set choiceSub, choice_1, choice_2
+
+-- 데이터 삭제
+UPDATE voteposts SET created_at = NULL;
+
+ALTER TABLE voteposts MODIFY created_at VARCHAR2(16) DEFAULT TO_CHAR(
+    CURRENT_TIMESTAMP, 'YYYY-DD-MM HH24:MI'
+);
+
+
+
+

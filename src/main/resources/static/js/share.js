@@ -12,3 +12,13 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+function hide3() {
+    console.log("-------------------------------------");
+    var element = document.querySelector('.myDiv');
+    if (element.style.display === 'none') {
+        element.style.display = 'block';
+    } else {
+        element.style.display = 'none';
+    }
+}
