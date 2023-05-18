@@ -13,13 +13,13 @@ public class VoteDto {
 	private String choice_2;
 	private int choice1_count;
 	private int choice2_count;
-	private Timestamp created_at;
+	private String created_at;
 	private int isend;
 	
 	
 	// (alt + shift + S)Generate constructor using fields
 	public VoteDto(int num, String user_id, String choiceSub, String choice_1, String choice_2, int choice1_count,
-			int choice2_count, Timestamp created_at, int isend) {
+			int choice2_count, String created_at, int isend) {
 		super();
 		this.num = num;
 		this.user_id = user_id;

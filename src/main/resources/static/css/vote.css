@@ -286,4 +286,18 @@ label>input{
 .result2{
 	width: 80px;
 }
+.cDate{
+	position: absolute;
+	left:50%;
+	top:77%;
+    transform: translate(-50%, 100%);
+    ;
+}
 /* </vote> */
+
+
+
+
+
+
+
