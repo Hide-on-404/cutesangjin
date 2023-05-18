@@ -19,7 +19,7 @@ public interface IVoteDao {
 	public int updateVote(int num, String choiceSub, String choice_1, String choice_2);
 
 	// 따봉클릭해서 count 증가
-	public int countUp(int choice1_count, int choice2_count, int num);
+	public int countUp(int num, int choice1_count, int choice2_count);
 
 	// 투표글 삭제
 	public int deleteVote(int num);

@@ -22,8 +22,8 @@
 	</update>
 	
 	<update id="countUp">
-		uptdate VOTEPOSTS set choice1_count=#{param1}, choice2_count=#{param2}
-		where num = #{param3}
+ 		 update VOTEPOSTS set choice1_count = choice1_count + #{choice1_count}, choice2_count = choice2_count + #{choice2_count}
+		 where num = #{num}
 	</update>
 	
 	<delete id="deleteVote">

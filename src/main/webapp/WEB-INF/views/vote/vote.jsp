@@ -43,45 +43,52 @@
             </div>
             <!-- 게시된 투표글 목록 -->
             <div class = "board_vote">
-            <c:forEach var="vDto" items="${list }" varStatus="i">
+            <c:forEach var="vDto" items="${list }" varStatus="i">		
             <div class="choiceList">
-                <span class="chSub">Q${vDto.num}. &nbsp;${vDto.choiceSub }</span>
-                <a href="deleteVote?num=${vDto.num }"><img id="icon_del" src="resources/images/delete.png"></a>	
+                <span class="chSub">Q${vDto.num}. &nbsp;${vDto.choiceSub }</span>		<!-- 투표 제목 -->
+                <a href="deleteVote?num=${vDto.num }"><img id="icon_del" src="resources/images/delete.png"></a>		<!-- 삭제 버튼 -->	
                 <div class="imgtoggle">
 			    	<span>
-			    		<img id="icon_upd" class="editBtn" src="resources/images/update_open.png">
+			    		<img id="icon_upd" class="editBtn" src="resources/images/update_open.png">			<!-- 편집 버튼 -->
 			    	</span>
   				</div>
-                <div class="choice_realtime">
-                    <div class="chBox1">
-                    	<p class="ch1">${vDto.choice_1 }</p>
-                    	
-                    	<p class="count1 ${i.index}" onclick="upLeftCount(${vDto.num})">${vDto.choice1_count }
-                    	
-                    	<!-- <a href="#" onclick="leftCountUp()"><img class="icon_boom1" src="images/boomUp1.png"></a> -->
-                    	<label for="leftCk ${i.index }"><input type="checkbox" id="leftCk ${i.index }" class="leftCheck" onclick="leftCheckboxClick(this, 'rightCk ${i.index}',${vDto.num})">
-                    	<img class="icon_boom1" src="resources/images/boomUp1.png"></label></p>
-                   		<p class="result1"><i><fmt:formatNumber value="${vDto.choice1_count/(vDto.choice1_count+vDto.choice2_count)}" pattern="(##.##%)"/></i></p>
+                <div class="choice_realtime">		
+                    <div class="chBox1">		<!-- 왼쪽 항목 -->
+                    	<p class="ch1">${vDto.choice_1 }</p>		<!-- 1번 선택지 -->
+                    	<p class="count1 ${i.index}">${vDto.choice1_count }	<!-- 1번 선택지 count -->
+                    		<label for="leftCk ${i.index }">
+                    			<input type="checkbox" id="leftCk ${i.index }" class="leftCheck" onclick="CheckboxClick(${vDto.num}, 'leftGood'), ${vDto.choice1_count }, ${vDto.choice2_count }">		<!-- 1번 선택지 선택버튼 -->
+                    			<img class="icon_boom1" src="resources/images/boomUp1.png">
+               		     	</label>
+           		     	</p>
+                   		<p class="result1">
+                   			<i><fmt:formatNumber value="${vDto.choice1_count/(vDto.choice1_count+vDto.choice2_count)}" pattern="(##.##%)"/></i>	<!-- 1번 선택지 비율 -->
+                 		</p>
                     </div>
+                    <!-- 투표비율 표시바 -->
                     <div class="prcnt ${i.index}" 
                     style="background: linear-gradient(to right, rgb(117, 211, 255) ${vDto.choice1_count/(vDto.choice1_count+vDto.choice2_count)*100}%, 
                     		rgb(255, 133, 117) ${vDto.choice1_count/(vDto.choice1_count+vDto.choice2_count)*100}%)"></div>
                     <div class="chBox2">
-	                    <p class="ch2">${vDto.choice_2 }</p>
-                        <p class="count2 ${i.index }">
-                        <%-- <a href="#" onclick="rightCountUp()"><img class="icon_boom2" src="images/boomUp2.png"></a>${vDto.choice2_count }</p> --%>
-                       <label for="rightCk ${i.index }"><input type="checkbox" id="rightCk ${i.index }" class="rightCheck" onclick="handleCheckboxClick(this, 'leftCk ${i.index}')">
-                       <img class="icon_boom2" src="resources/images/boomUp2.png"></label>${vDto.choice2_count }</p>
-                   		<p class="result2"><i><fmt:formatNumber value="${vDto.choice2_count/(vDto.choice1_count+vDto.choice2_count)}" pattern="(##.##%)"/></i></p>
+	                    <p class="ch2">${vDto.choice_2 }</p>		<!-- 2번 선택지 -->
+                        <p class="count2 ${i.index }">					
+                     	  <label for="rightCk ${i.index }">
+                     	  	<input type="checkbox" id="rightCk ${i.index }" class="rightCheck" onclick="CheckboxClick(${vDto.num}, 'rightGood')">		<!-- 2번 선택지 선택버튼 -->
+                 		    <img class="icon_boom2" src="resources/images/boomUp2.png">
+                		  </label>${vDto.choice2_count }		<!-- 2번 선택지 count -->			
+                		</p>
+                   		<p class="result2">
+                   			<i><fmt:formatNumber value="${vDto.choice2_count/(vDto.choice1_count+vDto.choice2_count)}" pattern="(##.##%)"/></i>	<!-- 2번 선택지 비율 -->
+                  		</p>
+                   		<p class="cDate">${vDto.created_at }</p>		<!-- 생성일자 -->
                     </div>
                 </div>
                  <!-- 투표글 수정창 -->
             <div class="editChoice hide"> 
                     <div class="align">
-                    <h3>Q${vDto.num }. 투표글 수정</h3>
+                    <h3>Q${vDto.num }. 투표글 수정</h3>		<!-- 수정창 제목 -->
 	                    <form class="updVoteform" action="updateVote" method="post">
 	                    	<input type="hidden" name="num" value=${vDto.num }>
-	                    	<!-- <input type="hidden" name="user_id" value=;${vDto.user_id }> -->
         	                <p>골라줘 :</p><input style="width: 400px;" type="text" name="choiceSub" id="choiceSub" maxlength="25"
             	                autofocus tabindex="1" placeholder=" 25자까지만 쓰세요옹">
                 	        <input type="submit" id="startChoice" value="Edit Choice" tabindex="4"><br>

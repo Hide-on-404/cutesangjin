@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
   
 // 따봉 누르면(checkbox == checked) 카운트 1 증가
 /// 한번 더누르면(checkbox != checked ) 카운트 1 감소
-
+/*
 // 좌측 따봉버튼
 function leftCheckboxClick(checkbox, otherCheckboxId) {
   const otherCheckbox = document.getElementById(otherCheckboxId);
@@ -79,9 +79,37 @@ function leftCheckboxClick(checkbox, otherCheckboxId) {
 }
  function upLeftCount(num){
 	location.href='countUp?choice1_count='+count1After+'&choice2_count=3'+'&num='+num;
+}*/
+
+function CheckboxClick(num, state) {
+  // 왼쪽 체크박스 클릭 시
+  if (state == 'leftGood') {
+	  upCount(num, state);
+    // 오른쪽 체크박스 해제
+    document.querySelectorAll('.rightCheck').forEach(function(checkbox) {
+      checkbox.checked = false;
+    });
+  }
+  // 오른쪽 체크박스 클릭 시
+  else if (state == 'rightGood') {
+	  upCount(num, state)
+    // 왼쪽 체크박스 해제
+    document.querySelectorAll('.leftCheck').forEach(function(checkbox) {
+      checkbox.checked = false;
+    });
+  }}
+
+
+function upCount(num, state) {
+	
+	if(state == 'leftGood'){
+		alert(state);
+       location.href = 'countUp?num=' + num + '&choice1_count=' + 1 + '&choice2_count=' + 0;
+  }else if(state == 'rightGood'){
+	  alert(state);
+	    location.href = 'countUp?num=' + num + '&choice1_count=' + 0 + '&choice2_count=' +1;
+  }
 }
-
-
 
 
 

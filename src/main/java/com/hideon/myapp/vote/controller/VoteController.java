@@ -82,13 +82,14 @@ public class VoteController {
 	public String countUp(
 			@RequestParam("num") int num,
 			@RequestParam("choice1_count") int choice1_count,
-			@RequestParam("choice2_count") int choice2_count
+			@RequestParam("choice2_count") int choice2_count,
+			HttpServletRequest request
 			) {
-		int result = voteDao.countUp(choice1_count, choice2_count, num);
+		int result = voteDao.countUp(num, choice1_count, choice2_count);
 		
-		return "vote/vote";
+		return "redirect:vote";
 	}
-	
+
 	// 투표글 삭제
 	@RequestMapping("deleteVote")
 	public String deleteVote(
