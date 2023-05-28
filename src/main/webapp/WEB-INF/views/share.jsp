@@ -28,7 +28,7 @@
             <div id="notice" class="tabContent">
                 <div class="board_wrap">
 
-                    <div class="button">
+                    <div class="button1">
                         <button style="font-size: 20px;">+</button>
                     </div>
 
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="bt_wrap">
-                            <a href="main.html" class="on">등록</a>
+                            <a href="main" class="on">등록</a>
                         </div>
                     </div>
 
@@ -63,8 +63,10 @@
                                     document.write("<div>");
                                     document.write(i + 1);
                                     document.write("<div class='title'>");
+                                    document.write("<button style='border: none; background-color:transparent ' onclick={hide3()}>");
                                     document.write(a[i].title);
                                     document.write("</a></div>");
+                                    document.write("</button>");
                                     document.write("<div class='writer'>");
                                     document.write(a[i].name);
                                     document.write("</a></div>");
@@ -74,6 +76,12 @@
                                     document.write("<div class='count'>");
                                     document.write(i + 100);
                                     document.write("</a></div>");
+                                    document.write("<div class='contenthide hide myDiv' style='display: none' >");
+                                    document.write(a[i].content);
+                                    document.write(`</a><div class='bt_wrap'> <a href='main' class='on'>등록</a>
+                                           <a href='main' class='on'>수정</a>
+                                           <a href='main' class='on'>삭제</a>
+                                      </div></div>`);
                                     document.write("</div>");
                                 }
                             </script>
@@ -85,7 +93,7 @@
             <div id="gallery" class="tabContent">
                 <div class="board_wrap">
 
-                    <div class="button">
+                    <div class="button1">
                         <button style="font-size: 20px;">+</button>
                     </div>
 
@@ -102,7 +110,7 @@
                             </div>
                         </div>
                         <div class="bt_wrap">
-                            <a href="main.html" class="on">등록</a>
+                            <a href="main" class="on">등록</a>
                         </div>
                     </div>
 
@@ -117,12 +125,13 @@
                                 ]
 
                                 for (var i = 0; i < a.length; i++) {
-
                                     document.write("<div>");
                                     document.write(i + 1);
                                     document.write("<div class='title'>");
+                                    document.write("<button style='border: none; background-color:transparent ' onclick={hide3()}>");
                                     document.write(a[i].title);
                                     document.write("</a></div>");
+                                    document.write("</button>");
                                     document.write("<div class='writer'>");
                                     document.write(a[i].name);
                                     document.write("</a></div>");
@@ -132,6 +141,12 @@
                                     document.write("<div class='count'>");
                                     document.write(i + 100);
                                     document.write("</a></div>");
+                                    document.write("<div class='contenthide hide myDiv' style='display: none' >");
+                                    document.write(a[i].content);
+                                    document.write(`</a><div class='bt_wrap'> <a href='main' class='on'>등록</a>
+                                           <a href='main' class='on'>수정</a>
+                                           <a href='main' class='on'>삭제</a>
+                                      </div></div>`);
                                     document.write("</div>");
                                 }
                             </script>

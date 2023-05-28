@@ -1,0 +1,54 @@
+DROP TABLE users;
+DROP TABLE posts;
+
+CREATE TABLE users (
+                       id VARCHAR2(10) NOT NULL,
+                       password VARCHAR2(50) NOT NULL,
+                       academy_name VARCHAR2(50) NOT NULL,
+                       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                       CONSTRAINT pk_users PRIMARY KEY (id)
+);
+
+BEGIN
+    FOR i IN 1..10 LOOP
+            INSERT INTO users (id, password, academy_name)
+            VALUES (
+                           'user' || i,
+                           'password' || i,
+                           'Kibwa Academy'
+                   );
+        END LOOP;
+END;
+/
+
+
+
+CREATE TABLE posts (
+                       num NUMBER(10) NOT NULL,
+                       user_id VARCHAR2(10) NOT NULL,
+                       title VARCHAR2(50) NOT NULL,
+                       content VARCHAR2(500) NOT NULL,
+                       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                       view_count NUMBER(10) NOT NULL,
+                       sort NUMBER(10) NOT NULL,
+                       CONSTRAINT pk_posts PRIMARY KEY (num)
+);
+
+BEGIN
+    FOR i IN 1..10 LOOP
+            INSERT INTO posts (num, user_id, title, content, view_count, sort)
+            VALUES (
+                       i,
+                       'user' || i,
+                       'Title ' || i,
+                       'Content ' || i,
+                       i * 100,
+                       MOD(i, 3) + 1
+                   );
+        END LOOP;
+END;
+/
+
+
+select * from posts

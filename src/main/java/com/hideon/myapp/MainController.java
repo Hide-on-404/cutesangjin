@@ -14,32 +14,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
-
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String main(Locale locale, Model model) {
-//		return "main";
-//	}
 	
-	@RequestMapping(value = "/main")
+	@RequestMapping("/")
 	public String main(Locale locale, Model model) {
-	    return "main";
+		return "main";
 	}
 	
-	@RequestMapping(value = "/share")
+	@RequestMapping("/share")
 	public String main1(Locale locale, Model model) {
 	    return "share";
 	}
 	
-	@RequestMapping(value = "/recruitment")
+	@RequestMapping("/recruitment")
 	public String main2(Locale locale, Model model) {
 	    return "recruitment";
 	}
 	
-	@RequestMapping(value = "/vote")
-	public String main3(Locale locale, Model model) {
-	    return "vote";
-	}
-	
-
-	
+	/*
+	 * @RequestMapping("/vote") public String main3(Locale locale, Model model) {
+	 * return "vote/vote"; }
+	 */
 }
